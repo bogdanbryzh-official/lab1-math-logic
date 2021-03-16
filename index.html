@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="inputbox">
+        <input
+          type="number"
+          name="amount"
+          id="amount"
+          placeholder="Letters amount"
+        />
+        <input type="text" name="letters" id="letters" placeholder="Letters" />
+        <button id="go" disabled>Go [button]</button>
+        <output id="output">
+          <div data-state="amount">0 letters</div>
+          <div data-state="letters">Entered:</div>
+        </output>
+      </div>
+      <div class="table">
+        <table>
+          <thead>
+            <tr>
+              <th>a</th>
+              <th>combination</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>0</td>
+              <td>0</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <script src="./index.js"></script>
+  </body>
+</html>
