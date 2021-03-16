@@ -1,6 +1,13 @@
 // Mixing algorithm
 //
 
+const implication = (a, b) => {
+  if (a) return b;
+  else return 1;
+};
+
+const not = a => +!a;
+
 const swapElement = (array, index) => {
   array[index] = +!array[index];
   return array;
@@ -87,6 +94,10 @@ const fillTable = letters => {
 
     tableHead.append(letterHead);
   }
+  const combinationHead = createTh(
+    `(¬${letters[0]}→${letters[1]})→(¬${letters[1]}→(¬¬${letters[0]}→${letters[0]}))`
+  );
+  tableHead.appendChild(combinationHead);
 
   const tableRows = mixArray(createArray(lettersAmount));
   tableRows.forEach(tableRow => {
@@ -94,6 +105,22 @@ const fillTable = letters => {
     tableRow.forEach(td => {
       tds.push(createTd(td));
     });
+    console.log('start over');
+    const a = tableRow[0];
+    const b = tableRow[1];
+    const combination = implication(
+      implication(not(a), b),
+      implication(not(b), implication(not(not(a)), a))
+    );
+    console.log(`a: ${a}`);
+    console.log(`b: ${b}`);
+    console.log('¬a→b', implication(not(a), b));
+    console.log('¬¬a→a', implication(not(not(a)), a));
+    console.log('¬b→(¬¬a→a)', implication(not(b), implication(not(not(a)), a)));
+    console.log('final', combination);
+
+    tds.push(createTd(combination));
+
     tableBody.appendChild(createTableRow(tds));
   });
 };
